@@ -1,0 +1,772 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Machine Learning Regression Blog</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+
+    <header>
+
+        <div class="container">
+
+            <h1>Machine Learning Regression Blog</h1>
+
+            <p>Understanding Regression Algorithms Through Practical Examples</p>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <!-- ================================================== -->
+        <!--              PART 1 - LINEAR REGRESSION            -->
+        <!-- ================================================== -->
+
+        <section class="topic-header">
+
+            <h2>📘 Part 1: Linear Regression</h2>
+
+            <p>
+                Understanding Linear Regression and Numerical Prediction
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>What is Linear Regression?</h2>
+
+            <p>
+                Linear Regression is a supervised machine learning
+                algorithm used to predict a continuous numerical value.
+            </p>
+
+            <p>
+                It finds the relationship between an independent variable
+                and a dependent variable using a best-fit straight line.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>How Does Linear Regression Work?</h2>
+
+            <p>
+                Linear Regression studies the relationship between input
+                data and output data and creates a line that best represents
+                the relationship.
+            </p>
+
+            <p>
+                For example, we can use the number of study hours to
+                predict a student's marks.
+            </p>
+
+            <h3>Example</h3>
+
+            <p>
+                <strong>Study Hours → Marks</strong>
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Linear Regression Formula</h2>
+
+            <p>
+                <strong>ŷ = b₀ + b₁x</strong>
+            </p>
+
+            <p>
+                Here, ŷ is the predicted value, b₀ is the intercept,
+                b₁ is the slope, and x is the input value.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Interactive Linear Regression Prediction</h2>
+
+            <p>
+                Enter the number of hours studied and our Linear Regression
+                model will predict the expected marks.
+            </p>
+
+<form method="POST">
+
+    <input
+        type="hidden"
+        name="model_type"
+        value="linear"
+    >
+
+    <input
+        type="number"
+        name="study_hours"
+        step="0.1"
+        min="1"
+        max="8"
+        placeholder="Study Hours"
+        required
+    >
+
+    <button type="submit">
+        Predict Marks
+    </button>
+
+</form>
+            
+
+            {% if prediction is not none %}
+
+            <div class="result">
+
+                <h3>Prediction Result</h3>
+
+                <p>
+                    Predicted Marks:
+                    <strong>{{ prediction }}</strong>
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <section>
+
+            <h2>Sample Dataset</h2>
+
+            <p>
+                The Linear Regression model is trained using sample data
+                containing study hours and corresponding student marks.
+            </p>
+
+
+            <table>
+
+                <tr>
+                    <th>Study Hours</th>
+                    <th>Marks</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>35</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>40</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>50</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>55</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>65</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>70</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>78</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>85</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <section>
+
+            <h2>Types of Linear Regression</h2>
+
+
+            <h3>Simple Linear Regression</h3>
+
+            <p>
+                Simple Linear Regression uses one independent variable
+                to predict one dependent variable.
+            </p>
+
+            <p>
+                Example:
+                <strong>Study Hours → Marks</strong>
+            </p>
+
+
+            <h3>Multiple Linear Regression</h3>
+
+            <p>
+                Multiple Linear Regression uses two or more independent
+                variables to predict a dependent variable.
+            </p>
+
+            <p>
+                Example:
+                <strong>
+                    House Size + Location + Number of Rooms → House Price
+                </strong>
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Independent and Dependent Variables</h2>
+
+            <p>
+                The independent variable is the input used to make a
+                prediction. The dependent variable is the value we
+                want to predict.
+            </p>
+
+            <p>
+                Example:
+                <strong>Study Hours</strong> is the independent variable,
+                while <strong>Marks</strong> is the dependent variable.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Real-World Applications</h2>
+
+            <ul>
+
+                <li>House price prediction</li>
+
+                <li>Sales prediction</li>
+
+                <li>Salary prediction</li>
+
+                <li>Student marks prediction</li>
+
+                <li>Demand forecasting</li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Advantages</h2>
+
+            <ul>
+
+                <li>Simple and easy to understand</li>
+
+                <li>Fast to train</li>
+
+                <li>Useful for numerical predictions</li>
+
+                <li>Easy to interpret</li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Limitations</h2>
+
+            <ul>
+
+                <li>
+                    It assumes a linear relationship between variables.
+                </li>
+
+                <li>
+                    Outliers can affect the model.
+                </li>
+
+                <li>
+                    It may not work well with complex relationships.
+                </li>
+
+                <li>
+                    Good quality data is important for accurate predictions.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Conclusion</h2>
+
+            <p>
+                Linear Regression is one of the simplest and most useful
+                machine learning algorithms for predicting continuous values.
+                It is easy to understand and provides a strong foundation
+                for learning more advanced machine learning techniques.
+            </p>
+
+        </section>
+
+
+        <!-- ================================================== -->
+        <!--          END OF LINEAR REGRESSION                  -->
+        <!-- ================================================== -->
+
+
+        <!-- ================================================== -->
+        <!--            PART 2 - LOGISTIC REGRESSION             -->
+        <!-- ================================================== -->
+
+        <section class="topic-header">
+
+            <h2>📗 Part 2: Logistic Regression</h2>
+
+            <p>
+                Understanding Logistic Regression and Classification
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>What is Logistic Regression?</h2>
+
+            <p>
+                Logistic Regression is a supervised machine learning
+                algorithm mainly used for classification problems.
+            </p>
+
+            <p>
+                Unlike Linear Regression, which predicts a continuous
+                numerical value, Logistic Regression predicts a category
+                or class.
+            </p>
+
+            <h3>Example</h3>
+
+            <p>
+                We can use a student's study hours to predict whether
+                the student will <strong>Pass</strong> or <strong>Fail</strong>.
+            </p>
+
+            <p>
+                <strong>Study Hours → Pass / Fail</strong>
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>How Does Logistic Regression Work?</h2>
+
+            <p>
+                Logistic Regression takes input data and calculates the
+                probability of an event belonging to a particular class.
+            </p>
+
+            <p>
+                The model uses a mathematical function called the
+                <strong>Sigmoid Function</strong> to convert the result
+                into a probability between 0 and 1.
+            </p>
+
+            <h3>Example</h3>
+
+            <p>
+                Suppose a student studies for 6 hours. The model may
+                calculate a high probability that the student will pass.
+            </p>
+
+            <p>
+                In simple terms:
+                <strong>Input → Probability → Class</strong>
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Sigmoid Function</h2>
+
+            <p>
+                Logistic Regression uses the Sigmoid Function to convert
+                the model's output into a probability between 0 and 1.
+            </p>
+
+            <p>
+                The probability helps the model decide which class
+                the input belongs to.
+            </p>
+
+            <h3>Formula</h3>
+
+            <p>
+                <strong>
+                    σ(z) = 1 / (1 + e<sup>-z</sup>)
+                </strong>
+            </p>
+
+            <p>
+                The output of the Sigmoid Function is always between
+                <strong>0 and 1</strong>.
+            </p>
+
+            <h3>Classification Example</h3>
+
+            <p>
+                If the predicted probability is greater than or equal
+                to 0.5, the model can classify the result as
+                <strong>Pass</strong>.
+            </p>
+
+            <p>
+                If the probability is less than 0.5, the result can be
+                classified as <strong>Fail</strong>.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            <h2>Linear Regression vs Logistic Regression</h2>
+
+            <table>
+
+                <tr>
+
+                    <th>Feature</th>
+
+                    <th>Linear Regression</th>
+
+                    <th>Logistic Regression</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>Type</td>
+
+                    <td>Regression</td>
+
+                    <td>Classification</td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>Output</td>
+
+                    <td>Continuous numerical value</td>
+
+                    <td>Class / Category</td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>Example</td>
+
+                    <td>Predict Marks</td>
+
+                    <td>Predict Pass / Fail</td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>Main Function</td>
+
+                    <td>Linear equation</td>
+
+                    <td>Sigmoid function</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <section>
+
+            <h2>Interactive Logistic Regression Prediction</h2>
+
+            <p>
+                Enter the number of hours studied to predict whether
+                the student will Pass or Fail.
+            </p>
+
+<form method="POST">
+
+    <input
+        type="hidden"
+        name="model_type"
+        value="logistic"
+    >
+
+    <input
+        type="number"
+        name="study_hours"
+        step="0.1"
+        min="1"
+        max="8"
+        placeholder="Study Hours"
+        required
+    >
+
+    <button type="submit">
+        Predict Pass / Fail
+    </button>
+
+</form>
+            
+
+            {% if pass_prediction is not none %}
+
+            <div class="result">
+
+                <h3>Prediction Result</h3>
+
+                <p>
+                    Student is predicted to:
+                    <strong>{{ pass_prediction }}</strong>
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <section>
+
+            <h2>Logistic Regression Dataset</h2>
+
+            <p>
+                The model is trained using sample study hours and
+                the corresponding Pass or Fail results.
+            </p>
+
+
+            <table>
+
+                <tr>
+                    <th>Study Hours</th>
+                    <th>Result</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Fail</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Fail</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Fail</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Fail</td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Pass</td>
+                </tr>
+
+                <tr>
+                    <td>6</td>
+                    <td>Pass</td>
+                </tr>
+
+                <tr>
+                    <td>7</td>
+                    <td>Pass</td>
+                </tr>
+
+                <tr>
+                    <td>8</td>
+                    <td>Pass</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <section>
+
+            <h2>Real-World Applications</h2>
+
+            <ul>
+
+                <li>Email spam detection</li>
+
+                <li>Disease prediction</li>
+
+                <li>Customer churn prediction</li>
+
+                <li>Loan approval prediction</li>
+
+                <li>Pass or Fail prediction</li>
+
+                <li>Fraud detection</li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Advantages</h2>
+
+            <ul>
+
+                <li>Simple and easy to understand</li>
+
+                <li>Works well for classification problems</li>
+
+                <li>Provides probability of prediction</li>
+
+                <li>Fast to train</li>
+
+                <li>Easy to interpret</li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Limitations</h2>
+
+            <ul>
+
+                <li>
+                    It is mainly suitable for classification problems.
+                </li>
+
+                <li>
+                    It may not perform well with very complex relationships.
+                </li>
+
+                <li>
+                    Good quality training data is important.
+                </li>
+
+                <li>
+                    Outliers and irrelevant features can affect performance.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <section>
+
+            <h2>Conclusion</h2>
+
+            <p>
+                Logistic Regression is a simple and useful supervised
+                machine learning algorithm for classification problems.
+            </p>
+
+            <p>
+                It uses probability to classify data into different
+                categories. For example, it can predict whether a student
+                is likely to Pass or Fail based on study hours.
+            </p>
+
+            <p>
+                Logistic Regression is also a good starting point for
+                understanding more advanced classification algorithms
+                in machine learning.
+            </p>
+
+        </section>
+
+
+        <!-- ================================================== -->
+        <!--          END OF LOGISTIC REGRESSION                -->
+        <!-- ================================================== -->
+
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+    <footer>
+
+        <p>
+            Machine Learning Regression Assignment
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```
